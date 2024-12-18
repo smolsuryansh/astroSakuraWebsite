@@ -36,14 +36,28 @@ const Hero = () => {
         }
     }, [loadedVideos])
 
+    // useEffect(() => {
+    //     // Preload all videos on component
+    //     const preloadAllVideos = () => {
+    //         for (let i = 1; i <= totalVideos; i++) {
+    //             const video = document.createElement("video");
+    //             video.src = getVideoSrc(i);
+    //             video.preload = "auto";
+    //             video.load();
+    //         }
+    //     };
+
+    //     preloadAllVideos();
+    // }, []);
+
+    // for gif
     useEffect(() => {
         // Preload all videos on component
         const preloadAllVideos = () => {
             for (let i = 1; i <= totalVideos; i++) {
-                const video = document.createElement("video");
+                const video = new Image();
                 video.src = getVideoSrc(i);
-                video.preload = "auto";
-                video.load();
+                video.onload = handleVideoLoad;
             }
         };
 
@@ -97,7 +111,7 @@ const Hero = () => {
         })
     })
 
-    const getVideoSrc = (index) => `videos/hero-${index}.mp4`
+    const getVideoSrc = (index) => `/videos/hero-${index}.gif`
 
     return (
         <div id="home" className="relative h-dvh w-screen overflow-x-hidden bg-[#dfdff0]">
@@ -123,7 +137,7 @@ const Hero = () => {
                             onClick={handleMiniVdClick}
                             className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
                         >
-                            <video
+                            <img
                                 ref={nextVideoRef}
                                 src={getVideoSrc(upcomingVideoIndex)}
                                 loop
@@ -136,7 +150,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    <video
+                    <img
                         ref={nextVideoRef}
                         src={getVideoSrc(currentIndex)}
                         loop
@@ -147,7 +161,7 @@ const Hero = () => {
                         preload="auto"
                     />
 
-                    <video
+                    <img
                         ref={currentVideoRef}
                         src={getVideoSrc(currentIndex - 1 === 0 ? 4 : currentIndex - 1)}
                         autoPlay
