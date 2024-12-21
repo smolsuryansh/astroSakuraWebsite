@@ -12,6 +12,9 @@ export default {
 			'Roboto-Bold': ['Roboto-Bold', 'sans-serif'],
 			'Roboto-Light': ['Roboto-Light', 'sans-serif'],
 			'Helvetica-Bold': ['Helvetica-Bold', 'sans-serif'],
+			'MerriweatherSans-ExtraBold': ['MerriweatherSans-ExtraBold', 'sans-serif'],
+			'MerriweatherSans': ['MerriweatherSans', 'sans-serif'],
+			'TitilliumWeb-Black': ['TitilliumWeb-Black', 'sans-serif']
 		  },
 		  colors: {
 			pink: {

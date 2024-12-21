@@ -36,28 +36,14 @@ const Hero = () => {
         }
     }, [loadedVideos])
 
-    // useEffect(() => {
-    //     // Preload all videos on component
-    //     const preloadAllVideos = () => {
-    //         for (let i = 1; i <= totalVideos; i++) {
-    //             const video = document.createElement("video");
-    //             video.src = getVideoSrc(i);
-    //             video.preload = "auto";
-    //             video.load();
-    //         }
-    //     };
-
-    //     preloadAllVideos();
-    // }, []);
-
-    // for gif
     useEffect(() => {
         // Preload all videos on component
         const preloadAllVideos = () => {
             for (let i = 1; i <= totalVideos; i++) {
-                const video = new Image();
+                const video = document.createElement("video");
                 video.src = getVideoSrc(i);
-                video.onload = handleVideoLoad;
+                video.preload = "auto";
+                video.load();
             }
         };
 
@@ -69,23 +55,26 @@ const Hero = () => {
 
             gsap.set('#next-video', {
                 opacity: 1,
+                scale: 0.95,
             });
-
-            gsap.to('#next-video', {
-                transformOrigin: 'center center',
-                scale: 1,
-                width: '100%',
-                height: '100%',
-                duration: 1,
-                ease: 'power1.inOut',
-                onStart: () => nextVideoRef.current.play(),
-            })
 
             gsap.from('#current-video', {
                 transformOrigin: 'center center',
                 scale: 0,
                 duration: 1.5,
                 ease: 'power1.inOut',
+                onClick: () => currentVideoRef.current.play(),
+            })
+
+            gsap.to('#next-video', {
+                visibility: 'visible',
+                transformOrigin: 'center center',
+                scale: 1,
+                width: '100%',
+                height: '100%',
+                duration: 1,
+                ease: 'power1.inOut',
+                onStart: () => currentVideoRef.current.play(),
             })
         }
     }, {
@@ -111,7 +100,7 @@ const Hero = () => {
         })
     })
 
-    const getVideoSrc = (index) => `/videos/hero-${index}.gif`
+    const getVideoSrc = (index) => `/videos/hero-${index}.mp4`
 
     return (
         <div id="home" className="relative h-dvh w-screen overflow-x-hidden bg-[#dfdff0]">
@@ -137,31 +126,32 @@ const Hero = () => {
                             onClick={handleMiniVdClick}
                             className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
                         >
-                            <img
+                            <video
                                 ref={nextVideoRef}
                                 src={getVideoSrc(upcomingVideoIndex)}
                                 loop
                                 muted
                                 id="current-video"
-                                className="size-64 origin-center scale-150 object-cover object-center"
+                                className="size-64 origin-center scale-50 object-cover object-center sm:scale-150 rounded-lg"
                                 onLoadedData={handleVideoLoad}
                                 preload="auto"
                             />
                         </div>
                     </div>
 
-                    <img
+                    <video
                         ref={nextVideoRef}
                         src={getVideoSrc(currentIndex)}
+                        autoPlay // temp
                         loop
                         muted
                         id="next-video"
-                        className="absolute-center opacity-0 absolute z-20 size-64 object-cover object-center"
+                        className="absolute-center absolute opacity-0 z-20 size-64 object-cover object-center"
                         onLoadedData={handleVideoLoad}
                         preload="auto"
                     />
 
-                    <img
+                    <video
                         ref={currentVideoRef}
                         src={getVideoSrc(currentIndex - 1 === 0 ? 4 : currentIndex - 1)}
                         autoPlay

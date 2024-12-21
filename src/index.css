@@ -47,6 +47,16 @@ body {
         font-family: 'Roboto-Light';
         src: url('/fonts/Roboto-Light.woff2') format('woff2');
     }
+
+    @font-face {
+      font-family: 'MerriWeatherSans';
+      src: url('/fonts/MerriWeatherSans.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'MerriweatherSans-ExtraBold';
+      src: url('/fonts/MerriweatherSans-ExtraBold.woff2') format('woff2');
+    }
 }
 
 @layer utilities {
