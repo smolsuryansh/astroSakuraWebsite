@@ -39,7 +39,7 @@ const Contact = () => {
                     </p>
 
                     <p className='special-font mt-10 w-full font-Helvetica-Bold uppercase text-5xl leading-[0.9] md:text-[6rem] mix-blend-difference'>
-                        Hi im a secret <br /> and i dunno what <br /> to say so,<br /> secret! <br /> WOW <br /> Minecraft is fun <br /> fml
+                        Hi im a secret <br /> and i dunno what <br /> to say, <br /> Minecraft is fun <br /> Try minecraft :D
                     </p>
 
                     <Button 

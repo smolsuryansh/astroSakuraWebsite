@@ -3,7 +3,7 @@ import { FaDiscord, FaInstagram, FaGithub, FaSpotify } from "react-icons/fa";
 
 
 const links = [
-  { href: 'https://discord.gg/c8F4nXT3gj', icon: <FaDiscord /> },
+  { href: 'https://discord.gg/com', icon: <FaDiscord /> },
   { href: 'https://instagram.com/smolhammy252', icon: <FaInstagram /> },
   { href: 'https://github.com/smolsuryansh', icon: <FaGithub /> },
   { href: 'https://open.spotify.com/user/88dxmwj7yf6fazqd9uudoizcs?si=e0084db082d14686', icon: <FaSpotify /> },

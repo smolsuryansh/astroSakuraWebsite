@@ -139,6 +139,7 @@ const Hero = () => {
                         </div>
                     </div>
 
+                    {/* Next video that appears when clicked */}
                     <video
                         ref={nextVideoRef}
                         src={getVideoSrc(currentIndex)}
@@ -146,11 +147,12 @@ const Hero = () => {
                         loop
                         muted
                         id="next-video"
-                        className="absolute-center absolute opacity-0 z-20 size-64 object-cover object-center"
+                        className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] opacity-0 z-20 size-64 object-cover object-center"
                         onLoadedData={handleVideoLoad}
                         preload="auto"
                     />
 
+                    {/* Video that plays in the background */}
                     <video
                         ref={currentVideoRef}
                         src={getVideoSrc(currentIndex - 1 === 0 ? 4 : currentIndex - 1)}
